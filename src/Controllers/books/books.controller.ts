@@ -16,8 +16,8 @@ export class BooksController {
   constructor(private booksService: BooksService) {}
 
   @Get()
-  getBooks() {
-    return 'todos os books';
+  getAllBooks() {
+    return this.booksService.getAllBooks();
   }
 
   @Get(':id')
@@ -27,7 +27,6 @@ export class BooksController {
 
   @Post()
   saveBook(@Body() book: BookDTO) {
-    console.log(book);
     return this.booksService.saveBook(book);
   }
 

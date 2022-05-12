@@ -17,4 +17,12 @@ export class BookRepository {
     const savedBook = new this.bookModel(newBook);
     return await savedBook.save();
   }
+
+  async getAllBooks(): Promise<BookDTO[]> {
+    const books = await this.bookModel
+      .find({}, { __v: false })
+      .sort({ name: +1 })
+      .exec();
+    return books;
+  }
 }

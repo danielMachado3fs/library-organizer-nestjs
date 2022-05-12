@@ -12,4 +12,8 @@ export class BooksService {
 
     return await this.bookRepository.saveBook(newBook);
   }
+
+  async getAllBooks(): Promise<BookDTO[]> {
+    return await this.bookRepository.getAllBooks();
+  }
 }
