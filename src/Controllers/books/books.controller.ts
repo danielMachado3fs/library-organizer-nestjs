@@ -8,6 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { BooksDTO } from 'src/DTO/books.dto';
 import { BooksService } from 'src/Services/books/books.service';
 
 @Controller('books')
@@ -25,7 +26,7 @@ export class BooksController {
   }
 
   @Post()
-  setBook(@Body() book: any) {
+  setBook(@Body() book: BooksDTO) {
     console.log(book);
     return book;
   }
