@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { BooksDTO } from 'src/DTO/books.dto';
+import { BookDTO } from 'src/DTO/books.dto';
 import { BooksService } from 'src/Services/books/books.service';
 
 @Controller('books')
@@ -26,9 +26,9 @@ export class BooksController {
   }
 
   @Post()
-  setBook(@Body() book: BooksDTO) {
+  saveBook(@Body() book: BookDTO) {
     console.log(book);
-    return book;
+    return this.booksService.saveBook(book);
   }
 
   @Patch()

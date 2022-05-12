@@ -9,7 +9,7 @@ import {
 } from 'class-validator';
 import { AuthorDTO } from './author.dto';
 
-export class BooksDTO {
+export class BookDTO {
   @IsString()
   @IsNotEmpty()
   readonly name: string;
@@ -20,7 +20,7 @@ export class BooksDTO {
   @ValidateNested({ each: true }) // faz as validações da classe principal
   //que nesse caso é BooksDTO mas tambem faz as validações da classe AuthorDTO
   //o parâmetro {each:true} é para fazer a validação da classe AuthorDTO em cada elemento do array
-  readonly althor: AuthorDTO[];
+  readonly author: AuthorDTO[];
 
   @IsString()
   @IsNotEmpty()
