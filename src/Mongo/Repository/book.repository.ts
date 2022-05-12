@@ -13,16 +13,19 @@ import { Book } from '../Interfaces/book.interface';
 export class BookRepository {
   constructor(@InjectModel('book') private readonly bookModel: Model<Book>) {}
 
-  async saveBook(newBook: BookDTO): Promise<BookDTO> {
+  async saveBook(newBook: BookDTO): Promise<Book> {
     const savedBook = new this.bookModel(newBook);
     return await savedBook.save();
   }
 
-  async getAllBooks(): Promise<BookDTO[]> {
-    const books = await this.bookModel
+  async getAllBooks(): Promise<Book[]> {
+    return await this.bookModel
       .find({}, { __v: false })
       .sort({ name: +1 })
       .exec();
-    return books;
   }
+
+  //   async getBookByName(name: string): Promise<Book> {
+  //     return await this.bookModel.find({ name: name }, { __v: false });
+  //   }
 }

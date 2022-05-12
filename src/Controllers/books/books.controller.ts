@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   ParseIntPipe,
   Patch,
@@ -17,7 +18,9 @@ export class BooksController {
 
   @Get()
   getAllBooks() {
-    return this.booksService.getAllBooks();
+    return this.booksService.getAllBooks().catch((e) => {
+      throw new NotFoundException(e.message);
+    });
   }
 
   @Get(':id')
