@@ -1,0 +1,153 @@
+[{
+  "_id": {
+    "$oid": "627e434da07bfff1cd48e72b"
+  },
+  "name": "A menina que roubava livros",
+  "author": [
+    {
+      "name": "Markus",
+      "surname": "Zusak",
+      "_id": {
+        "$oid": "627e434da07bfff1cd48e72c"
+      }
+    }
+  ],
+  "language": "Alemão, Inglês",
+  "releaseYear": 2005,
+  "publisher": "Editora",
+  "pages": 300,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "627e43a8a07bfff1cd48e72e"
+  },
+  "name": "Maze Runner - Correr ou Morrer",
+  "author": [
+    {
+      "name": "James",
+      "surname": "Dashner",
+      "_id": {
+        "$oid": "627e43a8a07bfff1cd48e72f"
+      }
+    }
+  ],
+  "language": "Alemão, Inglês",
+  "releaseYear": 2009,
+  "publisher": "Editora",
+  "pages": 334,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "627e43dea07bfff1cd48e731"
+  },
+  "name": "Ordem de Extermínio",
+  "author": [
+    {
+      "name": "James",
+      "surname": "Dashner",
+      "_id": {
+        "$oid": "627e43dea07bfff1cd48e732"
+      }
+    }
+  ],
+  "language": "Inglês",
+  "releaseYear": 2012,
+  "publisher": "Editora",
+  "pages": 255,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "627e4408a07bfff1cd48e734"
+  },
+  "name": "A cura mortal",
+  "author": [
+    {
+      "name": "James",
+      "surname": "Dashner",
+      "_id": {
+        "$oid": "627e4408a07bfff1cd48e735"
+      }
+    }
+  ],
+  "language": "Inglês, Português",
+  "releaseYear": 2011,
+  "publisher": "Editora",
+  "pages": 298,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "627e4444a07bfff1cd48e737"
+  },
+  "name": "Prova de Fogo frio",
+  "author": [
+    {
+      "name": "James",
+      "surname": "Dashner",
+      "_id": {
+        "$oid": "627e6857195aa066d103bfce"
+      }
+    }
+  ],
+  "language": "Inglês",
+  "releaseYear": 2011,
+  "publisher": "Editora",
+  "pages": 322,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "627e44a5a07bfff1cd48e73a"
+  },
+  "name": "A Guerra dos Tronos: Batalha Final 2",
+  "author": [
+    {
+      "name": "George",
+      "surname": "Martin",
+      "_id": {
+        "$oid": "627eba0bf4ecf5925326dd48"
+      }
+    }
+  ],
+  "language": "Inglês, Português",
+  "releaseYear": 2000,
+  "publisher": "Bantam Spectra",
+  "pages": 243,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "627e44e0a07bfff1cd48e73d"
+  },
+  "name": "O homem mais inteligente da história",
+  "author": [
+    {
+      "name": "Augusto",
+      "surname": "Cury",
+      "_id": {
+        "$oid": "627eb833f4ecf5925326dd32"
+      }
+    }
+  ],
+  "language": "Portugues",
+  "releaseYear": 2015,
+  "publisher": "Editora",
+  "pages": 270,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "627e8fcad73c8625bfc00dc0"
+  },
+  "name": "A Dança dos Dragões 2",
+  "author": [
+    {
+      "name": "George",
+      "surname": "Martin",
+      "_id": {
+        "$oid": "627eb976f4ecf5925326dd41"
+      }
+    }
+  ],
+  "language": "Inglês, Português",
+  "releaseYear": 2011,
+  "publisher": "Bantam Spectra",
+  "pages": 349,
+  "__v": 0
+}]

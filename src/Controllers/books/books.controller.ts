@@ -31,9 +31,8 @@ export class BooksController {
     });
   }
 
-  @Get('getBookByOptions')
-  getBookByOptions(@Body() options: OptionsDTO) {
-    console.log(options);
+  @Post('getBookByOptions')
+  getBookByOptions(@Body() options: any) {
     return this.booksService.getBookByOptions(options).catch((e) => {
       throw new NotFoundException(e.message);
     });

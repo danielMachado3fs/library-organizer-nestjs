@@ -35,25 +35,24 @@ export class BooksService {
     return books;
   }
 
-  async getBookByOptions(options) {
-    let data;
+  async getBookByOptions(options: OptionsDTO) {
+    let data = Object();
     if (options.name) {
-      data.name = { $regex: options.name };
+      data.name = { $regex: options.name, $options: 'i' };
     }
     if (options.language) {
-      data.language = { $regex: options.language };
+      data.language = { $regex: options.language, $options: 'i' };
     }
     if (options.releaseYear) {
       data.releaseYear = options.releaseYear;
     }
     if (options.publisher) {
-      data.publisher = { $regex: options.publisher };
+      data.publisher = { $regex: options.publisher, $options: 'i' };
     }
     if (options.pages) {
       data.pages = options.pages;
     }
-    console.log(data);
-    const books = await this.bookRepository.getBookByOptions(options);
+    const books = await this.bookRepository.getBookByOptions(data);
     if (!books.length) {
       throw Error('Nenhum livro encontrado!');
     }
@@ -75,10 +74,10 @@ export class BooksService {
       throw Error('Livro não encontrado!');
     }
     const bookUpdated = await this.bookRepository.updateBook(bookID, book);
-    if (!bookUpdated.modifiedCount) {
+    if (!bookUpdated) {
       throw Error('Não foi possivel atualizar o livro!');
     }
-    return await this.bookRepository.getBookById(bookID);
+    return bookUpdated;
   }
 
   async deleteBookById(id: string): Promise<Book> {

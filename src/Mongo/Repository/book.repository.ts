@@ -7,6 +7,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { BookDTO } from 'src/DTO/books.dto';
+import { OptionsDTO } from 'src/DTO/options.dto';
 import { Book } from '../Interfaces/book.interface';
 
 @Injectable()
@@ -36,8 +37,8 @@ export class BookRepository {
     return books;
   }
 
-  async getBookByOptions(options: object) {
-    const books = await this.bookModel.find(options, { __v: false }).exec();
+  async getBookByOptions(options: Object) {
+    const books = await this.bookModel.find(options, { __v: false });
     return books;
   }
 
@@ -47,10 +48,21 @@ export class BookRepository {
   }
 
   async deleteBookById(id: string): Promise<Book> {
-    return await this.bookModel.findOneAndDelete({ _id: id });
+    return await this.bookModel.findByIdAndDelete(id);
+    /**
+     * Essa função findByIdAndDelete usa a função nativa findOneAndDelete() para remover o objeto,
+     * ela faz a mesma coisa que a findByIdAndRemove que usa a função nativa findOneAndRemove que foi
+     * descontinuada(deprecated), por isso é mais recomendável usar a primeira.
+     */
   }
 
   async updateBook(bookID: string, book: BookDTO) {
-    return await this.bookModel.replaceOne({ _id: bookID }, book);
+    return await this.bookModel.findByIdAndUpdate(bookID, book, {
+      returnDocument: 'after',
+    });
+    /**
+     * a opção findByIdAndUpdate retorna o objeto atualizado diferente da opção replaceOne
+     * que não retorna o objeto atualizado em si
+     * A opção returnDocument define se ela vai retornar o objeto antes de ser atualizado ou dpois */
   }
 }
