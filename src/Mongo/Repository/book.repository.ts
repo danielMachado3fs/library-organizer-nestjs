@@ -25,6 +25,17 @@ export class BookRepository {
       .exec();
   }
 
+  async getBooksByAuthorName(authorName: string[]) {
+    const books = await this.bookModel.find({
+      $or: [
+        { 'author.name': { $in: authorName } },
+        { 'author.surname': { $in: authorName } },
+      ],
+    });
+
+    return books;
+  }
+
   async getBookByOptions(options: object) {
     const books = await this.bookModel.find(options, { __v: false }).exec();
     return books;

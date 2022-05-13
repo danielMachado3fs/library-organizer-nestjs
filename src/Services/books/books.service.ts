@@ -23,6 +23,18 @@ export class BooksService {
     return allBooks;
   }
 
+  async getBooksByAuthorName(authorName: string) {
+    console.log(authorName);
+    const authorNameArray = authorName.split(' ');
+    const books = await this.bookRepository.getBooksByAuthorName(
+      authorNameArray,
+    );
+    if (!books.length) {
+      throw Error('Nenhum livro deste autor foi encontrado!');
+    }
+    return books;
+  }
+
   async getBookByOptions(options) {
     let data;
     if (options.name) {

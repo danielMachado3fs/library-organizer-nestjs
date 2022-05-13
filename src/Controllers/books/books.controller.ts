@@ -24,6 +24,13 @@ export class BooksController {
     });
   }
 
+  @Get('getBooksByAuthorName/:authorName')
+  getBooksByAuthorName(@Param('authorName') authorName: string) {
+    return this.booksService.getBooksByAuthorName(authorName).catch((e) => {
+      throw new NotFoundException(e.message);
+    });
+  }
+
   @Get('getBookByOptions')
   getBookByOptions(@Body() options: OptionsDTO) {
     console.log(options);
@@ -32,7 +39,7 @@ export class BooksController {
     });
   }
 
-  @Get(':bookID')
+  @Get('id/:bookID')
   getBookById(@Param('bookID') id: string) {
     return this.booksService.getBookById(id).catch((e) => {
       throw new NotFoundException(e.message);
