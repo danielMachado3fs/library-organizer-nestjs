@@ -25,8 +25,9 @@ export class BookRepository {
       .exec();
   }
 
-  async getBookByName(name: string): Promise<Book[]> {
-    return await this.bookModel.find({ name: name }, { __v: false }).exec();
+  async getBookByOptions(options: object): Promise<Book[]> {
+    const books = await this.bookModel.find(options, { __v: false }).exec();
+    return books;
   }
 
   async getBookById(id: string): Promise<Book> {

@@ -10,6 +10,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { BookDTO } from 'src/DTO/books.dto';
+import { OptionsDTO } from 'src/DTO/options.dto';
 import { BooksService } from 'src/Services/books/books.service';
 
 @Controller('books')
@@ -23,9 +24,10 @@ export class BooksController {
     });
   }
 
-  @Get(':bookName')
-  getBookByName(@Param('bookName') name: string) {
-    return this.booksService.getBookByName(name).catch((e) => {
+  @Post('getBookByOptions')
+  getBookByOptions(@Body() options) {
+    console.log(options);
+    return this.booksService.getBookByOptions(options).catch((e) => {
       throw new NotFoundException(e.message);
     });
   }
@@ -47,7 +49,7 @@ export class BooksController {
     return 'book';
   }
 
-  @Delete(':booID')
+  @Delete(':bookID')
   deleteBookById(@Param('bookID') id: string) {
     return this.booksService.deleteBookById(id).catch((e) => {
       throw new NotFoundException(e.message);
