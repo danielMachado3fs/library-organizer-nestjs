@@ -23,7 +23,7 @@ export class BooksService {
     return allBooks;
   }
 
-  async getBookByOptions(options): Promise<Book[]> {
+  async getBookByOptions(options) {
     let data;
     if (options.name) {
       data.name = { $regex: options.name };
@@ -54,6 +54,19 @@ export class BooksService {
       throw Error('Nenhum livro encontrado!');
     }
     return book;
+  }
+
+  async updateBook(bookID: string, book: BookDTO) {
+    const isBookExists = await this.bookRepository.getBookById(bookID);
+
+    if (!isBookExists) {
+      throw Error('Livro não encontrado!');
+    }
+    const bookUpdated = await this.bookRepository.updateBook(bookID, book);
+    if (!bookUpdated.modifiedCount) {
+      throw Error('Não foi possivel atualizar o livro!');
+    }
+    return await this.bookRepository.getBookById(bookID);
   }
 
   async deleteBookById(id: string): Promise<Book> {

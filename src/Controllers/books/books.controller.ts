@@ -24,8 +24,8 @@ export class BooksController {
     });
   }
 
-  @Post('getBookByOptions')
-  getBookByOptions(@Body() options) {
+  @Get('getBookByOptions')
+  getBookByOptions(@Body() options: OptionsDTO) {
     console.log(options);
     return this.booksService.getBookByOptions(options).catch((e) => {
       throw new NotFoundException(e.message);
@@ -44,9 +44,11 @@ export class BooksController {
     return this.booksService.saveBook(book);
   }
 
-  @Patch()
-  updateBook() {
-    return 'book';
+  @Patch(':bookID')
+  updateBook(@Param('bookID') bookID: string, @Body() book: BookDTO) {
+    return this.booksService.updateBook(bookID, book).catch((e) => {
+      throw new NotFoundException(e.message);
+    });
   }
 
   @Delete(':bookID')

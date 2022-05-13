@@ -25,7 +25,7 @@ export class BookRepository {
       .exec();
   }
 
-  async getBookByOptions(options: object): Promise<Book[]> {
+  async getBookByOptions(options: object) {
     const books = await this.bookModel.find(options, { __v: false }).exec();
     return books;
   }
@@ -37,5 +37,9 @@ export class BookRepository {
 
   async deleteBookById(id: string): Promise<Book> {
     return await this.bookModel.findOneAndDelete({ _id: id });
+  }
+
+  async updateBook(bookID: string, book: BookDTO) {
+    return await this.bookModel.replaceOne({ _id: bookID }, book);
   }
 }
