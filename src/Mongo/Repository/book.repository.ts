@@ -25,7 +25,16 @@ export class BookRepository {
       .exec();
   }
 
-  //   async getBookByName(name: string): Promise<Book> {
-  //     return await this.bookModel.find({ name: name }, { __v: false });
-  //   }
+  async getBookByName(name: string): Promise<Book[]> {
+    return await this.bookModel.find({ name: name }, { __v: false }).exec();
+  }
+
+  async getBookById(id: string): Promise<Book> {
+    const book = await this.bookModel.findById({ _id: id }, { __v: false });
+    return book;
+  }
+
+  async deleteBookById(id: string): Promise<Book> {
+    return await this.bookModel.findOneAndDelete({ _id: id });
+  }
 }

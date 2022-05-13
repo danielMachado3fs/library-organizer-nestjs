@@ -21,4 +21,24 @@ export class BooksService {
     }
     return allBooks;
   }
+
+  async getBookByName(name: string): Promise<Book[]> {
+    const books = await this.bookRepository.getBookByName(name);
+    if (books) {
+      throw Error('Nenhum livro encontrado!');
+    }
+    return books;
+  }
+
+  async getBookById(id: string): Promise<Book> {
+    const book = await this.bookRepository.getBookById(id);
+    if (!book) {
+      throw Error('Nenhum livro encontrado!');
+    }
+    return book;
+  }
+
+  async deleteBookById(id: string): Promise<Book> {
+    return await this.bookRepository.deleteBookById(id);
+  }
 }

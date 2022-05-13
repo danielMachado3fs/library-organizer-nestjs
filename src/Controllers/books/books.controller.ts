@@ -23,9 +23,18 @@ export class BooksController {
     });
   }
 
-  @Get(':id')
-  getBookById(@Param('id', ParseIntPipe) id) {
-    return 'book';
+  @Get(':bookName')
+  getBookByName(@Param('bookName') name: string) {
+    return this.booksService.getBookByName(name).catch((e) => {
+      throw new NotFoundException(e.message);
+    });
+  }
+
+  @Get(':bookID')
+  getBookById(@Param('bookID') id: string) {
+    return this.booksService.getBookById(id).catch((e) => {
+      throw new NotFoundException(e.message);
+    });
   }
 
   @Post()
@@ -38,8 +47,10 @@ export class BooksController {
     return 'book';
   }
 
-  @Delete()
-  deleteBook() {
-    return 'book deleted';
+  @Delete(':booID')
+  deleteBookById(@Param('bookID') id: string) {
+    return this.booksService.deleteBookById(id).catch((e) => {
+      throw new NotFoundException(e.message);
+    });
   }
 }
